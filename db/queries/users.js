@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import db from "#db/client";
 
+
 export async function createUser(username, password) {
   const sql = `
     INSERT INTO users(username, password)
@@ -16,7 +17,7 @@ export async function createUser(username, password) {
 export async function getUserByUsernameAndPassword(username, password) {
   const sql = `
     SELECT * FROM users
-    WHERE USERNAME = $1`;
+    WHERE username = $1`;
   const {
     rows: [user],
   } = await db.query(sql, [username]);
